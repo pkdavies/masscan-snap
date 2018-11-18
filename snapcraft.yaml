@@ -1,0 +1,25 @@
+name: masscan
+version: "0.01"
+summary: masscan
+description: >
+  TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes.
+  Based on https://github.com/robertdavidgraham/masscan
+
+
+confinement: devmode
+
+parts:
+  masscan:
+    plugin: make
+    source-type: git
+    source: https://github.com/robertdavidgraham/masscan.git
+    build-packages:
+      - git
+      - gcc
+      - make
+      - libpcap-dev
+
+apps:
+  masscan:
+    command: masscan
+
